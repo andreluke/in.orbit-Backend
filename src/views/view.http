@@ -1,0 +1,25 @@
+// Envia uma meta a ser usada
+POST http://localhost:3333/goals
+Content-Type: application/json
+
+{
+  "title": "ABP",
+  "desiredWeeklyFrequency": 3
+}
+
+###
+// Enviar que completou uma meta
+POST http://localhost:3333/goal-completion
+Content-Type: application/json
+
+{
+    "goalId": "pymhvzvfxzsoayos38ckstbm"
+}
+
+### 
+// Busca as metas ainda não completadas
+GET http://localhost:3333/pending-goals
+
+###
+// Buscar o sumario da semana
+GET http://localhost:3333/summary

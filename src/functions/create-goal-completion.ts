@@ -39,8 +39,12 @@ export async function createGoalCompletion({
     })
     .from(goals)
     .leftJoin(goalCompletionCount, eq(goalCompletionCount.goalId, goals.id))
-    .where(eq(goalCompletionCount.goalId, goalId))
+    .where(eq(goals.id, goalId)) // Aqui, cheque se a condição está correta.
     .limit(1);
+
+  if (!result[0]) {
+    throw new Error("No goal found for the provided goalId");
+  }
 
   const { completionCount, desiredWeeklyFrequency } = result[0];
 
